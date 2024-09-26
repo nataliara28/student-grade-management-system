@@ -13,6 +13,16 @@ def generate_grades(num_students, num_grades):
     return students
 
 
+# 2. Function to calculate the average grade of each student
+def calculate_average(students):
+    averages = {}
+    for student, grades in students.items():
+        averages[student] = sum(grades) / len(grades)
+    return averages
+
+
+
+
 def main():
     num_students = 5
     num_grades = 3
@@ -23,6 +33,13 @@ def main():
     print("Student Grades:")
     for student, grades in students.items():
         print(f"{student}: {grades}")
+        
+    # 2. Calculate average grades
+    averages = calculate_average(students)
+    
+    print("\nStudents Averages:")
+    for student, avg in averages.items():
+        print(f'{student}: {avg:.2f}')
         
 
 if __name__ == "__main__":
