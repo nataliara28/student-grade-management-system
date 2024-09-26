@@ -21,6 +21,21 @@ def calculate_average(students):
     return averages
 
 
+# 3. Function to find the top student based on average grades
+
+def find_top_student(averages):
+    top_student = None
+    top_avg = 0
+    
+    for student, avg in averages.items():
+        if avg > top_avg:
+            top_avg = avg
+            top_student = student
+    return top_student, top_avg
+    
+    
+    
+    
 
 
 def main():
@@ -40,7 +55,10 @@ def main():
     print("\nStudents Averages:")
     for student, avg in averages.items():
         print(f'{student}: {avg:.2f}')
-        
+    
+    # 3. Find the top student
+    top_student, top_avg = find_top_student(averages)
+    print(f"\nTop Student is: {top_student} with an average of {top_avg:.2f}")
 
 if __name__ == "__main__":
     main()
