@@ -1,16 +1,46 @@
-import random
 
-# 1. Function to generate random grades for students
-def generate_grades(num_students, num_grades):
+#import random
+
+# # 1. Function to generate random grades for students
+# def generate_grades(num_students, num_grades):
+#     students = {}
+#     # Generating name of students
+#     for i in range(1, num_students + 1):
+#         student_name = f"Student_{i}"
+#         # Generate random grades for the students
+#         grades = [random.randint(50, 100) for _ in range(num_grades)]
+#         students[student_name] = grades
+    
+#     return students
+
+def generate_grades_manually(num_students, num_grades):
     students = {}
-    # Generating name of students
-    for i in range(1, num_students + 1):
-        student_name = f"Student_{i}"
-        # Generate random grades for the students
-        grades = [random.randint(50, 100) for _ in range(num_grades)]
+    
+    for i in range(1, num_students +1):
+        # Prompt user for the student's name!!
+        student_name = input(f"Enter the name of student {i}: ")
+        
+        # Initialize an empty list for the student's grade
+        grades = []
+    
+        # Prompt the user to enter each grade
+        for grade in range(1, num_grades + 1):
+            while True:
+                try:
+                    grade = int(input(f"Enter grade for {student_name} (0-100): "))
+                    if 0 <= grade <= 100:
+                        grades.append(grade)
+                        break
+                    else:
+                        print("Grade must be between 0 and 100. Try again!!")
+                except ValueError as e:
+                    print(f"Invalid input, {e}")
+        # Store the student and their grade in the dictionary
         students[student_name] = grades
     
     return students
+                
+        
 
 
 # 2. Function to calculate the average grade of each student
@@ -50,11 +80,11 @@ def classify_students(averages, passing_mark):
     
     
 def main():
-    num_students = 5
-    num_grades = 3
+    num_students = 2
+    num_grades = 2
     
     #1. Generate students and grades
-    students = generate_grades(num_students, num_grades)
+    students = generate_grades_manually(num_students, num_grades)
     
     print("Student Grades:")
     for student, grades in students.items():
